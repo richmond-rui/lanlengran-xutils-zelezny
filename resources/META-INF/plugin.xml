@@ -1,0 +1,50 @@
+<idea-plugin version="2">
+    <id>com.lanlengran.android.plugin.xutilszelezny</id>
+    <name>Android Xutils Zelezny</name>
+    <version>1.0.0</version>
+    <vendor email="lanlengran@qq.com" url="https://www.cnblogs.com/lanlengran/">Lanlengran</vendor>
+
+    <description><![CDATA[
+      Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters.
+      ]]></description>
+
+    <change-notes><![CDATA[
+<html>
+  <b>1.0.0</b> (12/11/2018)
+  <ul>
+    <li>仅支持Xutils3，Xutils2没试过</li>
+    <li>基于开源项目Android ButterKnife Zelezny修改而来</li>
+    <li>***************</li>
+    <li>由蓝冷然修改完成</li>
+    <li>***************</li>
+  </ul>
+</html>
+      ]]></change-notes>
+
+    <idea-version since-build="123.72"/>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+                   on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <actions>
+        <action id="AddInjectionsAction"
+                class="com.avast.android.butterknifezelezny.InjectAction"
+                text="Lanlengran Xutils Injections"
+                icon="/icons/butterknife-zelezny.png"
+                description="Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters">
+
+            <keyboard-shortcut
+                    keymap="$default"
+                    first-keystroke="shift control B"/>
+            <add-to-group group-id="GenerateGroup"/>
+            <!-- <add-to-group group-id="ProjectViewPopupMenu" /> file pop-up -->
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="com.avast.android.butterknifezelezny.Settings"/>
+        <codeInsight.lineMarkerProvider language="JAVA"
+                                        implementationClass="com.avast.android.butterknifezelezny.navigation.NavigationMarkerProvider"/>
+    </extensions>
+</idea-plugin>
